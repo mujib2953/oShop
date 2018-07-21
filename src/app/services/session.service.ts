@@ -5,6 +5,8 @@ import * as  firebase from 'firebase';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from './user.service';
+import 'rxjs/add/operator/switchMap';
+
 
 @Injectable({
 	providedIn: 'root'

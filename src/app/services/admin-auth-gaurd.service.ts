@@ -4,6 +4,7 @@ import { SessionService } from './session.service';
 
 import { UserService } from './user.service';
 import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
 
 @Injectable({
 	providedIn: 'root'
