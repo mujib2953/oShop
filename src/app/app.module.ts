@@ -60,7 +60,7 @@ import { ProductService } from './services/product.service';
   imports: [
     BrowserModule,
     FormsModule,
-    CustomFormsModule
+    CustomFormsModule,
     AngularFireModule.initializeApp( environment.firebase ),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
