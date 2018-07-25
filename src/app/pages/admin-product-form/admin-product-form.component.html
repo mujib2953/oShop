@@ -7,7 +7,16 @@
 			class="form-control"
 			ngModel
 			name="title"
+
+			required
+			#title="ngModel"
 		/>
+		<div 
+			class="alert alert-danger"
+			*ngIf="title.touched && title.invalid"
+		>
+			Title is required.
+		</div>
 	</div>
 
 	<div class="form-group">
@@ -23,7 +32,25 @@
 				aria-label="Amount (to the nearest dollar)"
 				ngModel
 				name="price"
+
+				required
+				#price="ngModel"
+
+				[min]="1"
 			/>
+		</div>
+		<div 
+			class="alert alert-danger"
+			*ngIf="price.touched && price.invalid"
+		>
+			<div *ngIf="price.errors.required">
+				Price is required.
+			</div>
+
+			<div *ngIf="price.errors.min">
+				Price should be 1 or higher.
+			</div>
+			
 		</div>
 	</div>
 
@@ -35,8 +62,11 @@
 			class="form-control"
 			ngModel
 			name="category"
+
+			#category="ngModel"
+			required
 		>
-			<option value="">--Select--</option>
+			<option value="" disabled>--Select--</option>
 			<option 
 				*ngFor="let c of categories$ | async"
 				[value]="c.key"
@@ -44,6 +74,12 @@
 				{{ c.name }}
 			</option>
 		</select>
+		<div 
+			class="alert alert-danger"
+			*ngIf="category.touched && category.invalid"
+		>
+			Please select category.
+		</div>
 	</div>
 
 	<div class="form-group">
@@ -54,7 +90,29 @@
 			class="form-control"
 			ngModel
 			name="imageUrl"
+
+			required
+			#imgUrl="ngModel"
+
+			url
 		/>
+		<div 
+			class="alert alert-danger"
+			*ngIf="imgUrl.touched && imgUrl.invalid"
+		>
+			<div
+				*ngIf="imgUrl.errors.required"	
+			>
+				Image URL is required.
+			</div>
+
+			<div
+				*ngIf="imgUrl.errors.url"	
+			>
+				Please enter valid url.
+			</div>
+
+		</div>
 	</div>
 
 	<button

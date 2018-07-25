@@ -13,6 +13,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
 
 // --- all routes in App
 import { appPaths } from './nav';
@@ -59,6 +60,7 @@ import { ProductService } from './services/product.service';
   imports: [
     BrowserModule,
     FormsModule,
+    CustomFormsModule
     AngularFireModule.initializeApp( environment.firebase ),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -66,7 +68,7 @@ import { ProductService } from './services/product.service';
       appPaths,
       // { enableTracing: true }
     ),
-    NgbModule.forRoot()    
+    NgbModule.forRoot()
   ],
   providers: [
     SessionService,
