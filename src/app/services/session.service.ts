@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from './user.service';
 import 'rxjs/add/operator/switchMap';
-
+import 'rxjs/add/observable/of';
 
 @Injectable({
 	providedIn: 'root'
@@ -46,7 +46,12 @@ export class SessionService {
 	}
 
 	get appUser$(): Observable<any> {
-		return this.user$.switchMap( user => this.userService.get( user.uid ) );
+		return this.user$.switchMap( user => {
+			if( user )
+				return this.userService.get( user.uid )
+			
+			return Observable.of( null );
+		} );
 			
 	}
 }

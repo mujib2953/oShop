@@ -12,6 +12,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 // --- all routes in App
 import { appPaths } from './nav';
@@ -28,12 +29,15 @@ import { LoginComponent } from './pages/login/login.component';
 import { AdminProductsComponent } from './pages/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './pages/admin-orders/admin-orders.component';
 import { MyOrdersComponent } from './pages/my-orders/my-orders.component';
+import { AdminProductFormComponent } from './pages/admin-product-form/admin-product-form.component'; 
 
 // --- all services
 import { SessionService } from './services/session.service';
 import { AuthGaurdService } from './services/auth-gaurd.service';
 import { UserService } from './services/user.service';
-import { AdminAuthGaurdService } from './services/admin-auth-gaurd.service'; 
+import { AdminAuthGaurdService } from './services/admin-auth-gaurd.service';
+import { CategoryService } from './services/category.service';
+
 
 @NgModule({
   declarations: [
@@ -48,10 +52,12 @@ import { AdminAuthGaurdService } from './services/admin-auth-gaurd.service';
     LoginComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    AdminProductFormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AngularFireModule.initializeApp( environment.firebase ),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -59,13 +65,14 @@ import { AdminAuthGaurdService } from './services/admin-auth-gaurd.service';
       appPaths,
       // { enableTracing: true }
     ),
-    NgbModule.forRoot()
+    NgbModule.forRoot()    
   ],
   providers: [
     SessionService,
     AuthGaurdService,
+    AdminAuthGaurdService,
     UserService,
-    AdminAuthGaurdService
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })

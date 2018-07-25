@@ -20,6 +20,7 @@ import { ShopingCartComponent } from '../pages/shoping-cart/shoping-cart.compone
 // --- admins
 import { AdminProductsComponent } from '../pages/admin-products/admin-products.component';
 import { AdminOrdersComponent } from '../pages/admin-orders/admin-orders.component';
+import { AdminProductFormComponent } from '../pages/admin-product-form/admin-product-form.component';
 
 import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
 import { AdminAuthGaurdService } from '../services/admin-auth-gaurd.service';
@@ -39,6 +40,7 @@ export const appPaths: Routes = [
 
     { path: 'admin/products', component: AdminProductsComponent, canActivate: [ AuthGaurdService, AdminAuthGaurdService ] },
     { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [ AuthGaurdService, AdminAuthGaurdService ] },
+    { path: 'admin/products/new', component: AdminProductFormComponent, canActivate: [ AuthGaurdService, AdminAuthGaurdService ] },
 
     { path: '**', component: PageNotFoundComponent }
 ];
