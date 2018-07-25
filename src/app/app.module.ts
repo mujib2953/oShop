@@ -37,6 +37,7 @@ import { AuthGaurdService } from './services/auth-gaurd.service';
 import { UserService } from './services/user.service';
 import { AdminAuthGaurdService } from './services/admin-auth-gaurd.service';
 import { CategoryService } from './services/category.service';
+import { ProductService } from './services/product.service';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { CategoryService } from './services/category.service';
     AuthGaurdService,
     AdminAuthGaurdService,
     UserService,
-    CategoryService
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

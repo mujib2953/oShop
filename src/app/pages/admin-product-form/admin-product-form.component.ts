@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
+import { ProductService } from '../../services/product.service';
 
 @Component({
 	selector: 'app-admin-product-form',
@@ -11,7 +12,8 @@ export class AdminProductFormComponent implements OnInit {
 	categories$: any;
 
 	constructor(
-		categoryService: CategoryService
+		categoryService: CategoryService,
+		private productService: ProductService
 	) {
 		this.categories$ = categoryService.getCategories();
 
@@ -25,7 +27,7 @@ export class AdminProductFormComponent implements OnInit {
 	}
 
 	saveForm( p_products ) {
-		console.log( p_products );
+		this.productService.create( p_products );
 	}
 
 	logg( s ) {
