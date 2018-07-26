@@ -18,11 +18,6 @@ export class AdminProductFormComponent implements OnInit {
 		private productService: ProductService
 	) {
 		this.categories$ = categoryService.getCategories();
-
-		console.log( this.categories$ )
-
-		this.categories$
-			.subscribe( s => console.log( s ) )
 	}
 
 	ngOnInit() {

@@ -13,4 +13,8 @@ export class ProductService {
 	create( p_product: any ): any {
 		return this.db.list( '/products' ).push( p_product )
 	}
+
+	getAll() {
+		return this.db.list( '/products' ).snapshotChanges();
+	}
 }

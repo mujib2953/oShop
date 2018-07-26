@@ -15,7 +15,7 @@ export class CategoryService {
 	}
 
 	getCategories(){
-		return this.db.list( '/categories' ).valueChanges();
-		// return this.db.list( '/categories' ).snapshotChanges();
+		// return this.db.list( '/categories' ).valueChanges();
+		return this.db.list( '/categories' ).snapshotChanges();
 	}
 }
