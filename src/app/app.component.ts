@@ -17,6 +17,7 @@ export class AppComponent {
 
 		private userService: UserService
 	) {
+		console.clear();
 		sessionService
 			.user$
 			.subscribe( user => {

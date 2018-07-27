@@ -21,4 +21,8 @@ export class ProductService {
 	get( p_productId: string ) {
 		return this.db.object( `/products/${p_productId}` ).valueChanges();
 	}
+
+	update( p_productId: string, p_product: any ) {
+		return this.db.object( `/products/${ p_productId }` ).update( p_product );
+	}
 }

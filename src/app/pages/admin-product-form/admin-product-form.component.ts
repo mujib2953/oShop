@@ -13,6 +13,7 @@ export class AdminProductFormComponent implements OnInit {
 
 	categories$: any;
 	product: any = {};
+	id: string;
 
 	constructor(
 		private router: Router,
@@ -23,9 +24,9 @@ export class AdminProductFormComponent implements OnInit {
 	) {
 		this.categories$ = this.categoryService.getCategories();
 
-		let id  = this.route.snapshot.paramMap.get( 'id' );
-		if( id ) {
-			productService.get( id ).take(1).subscribe( ( p ) => {
+		this.id  = this.route.snapshot.paramMap.get( 'id' );
+		if( this.id ) {
+			productService.get( this.id ).take(1).subscribe( ( p ) => {
 				this.product = p;
 				console.log( p )
 			} );
@@ -36,7 +37,11 @@ export class AdminProductFormComponent implements OnInit {
 	}
 
 	saveForm( p_products ) {
-		this.productService.create( p_products );
+
+		if( this.id )
+			this.productService.update( this.id, p_products );
+		else
+			this.productService.create( p_products );
 		this.router.navigate( ['/admin/products'] );
 	}
 
