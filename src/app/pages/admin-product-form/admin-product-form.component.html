@@ -7,7 +7,7 @@
 					id="title"
 					type="text"
 					class="form-control"
-					ngModel
+					[(ngModel)]="product.title"
 					name="title"
 		
 					required
@@ -32,7 +32,7 @@
 						type="number"
 						class="form-control"
 						aria-label="Amount (to the nearest dollar)"
-						ngModel
+						[(ngModel)]="product.price"
 						name="price"
 		
 						required
@@ -62,7 +62,7 @@
 				<select 
 					id="category" 
 					class="form-control"
-					ngModel
+					[(ngModel)]="product.category"
 					name="category"
 		
 					#category="ngModel"
@@ -90,7 +90,7 @@
 					id="imageUrl"
 					type="text"
 					class="form-control"
-					ngModel
+					[(ngModel)]="product.imageUrl"
 					name="imageUrl"
 		
 					required
@@ -127,10 +127,15 @@
 	</div>
 	<div class="col-md-6">
 		<div class="card" style="width: 18rem;">
-			<img class="card-img-top" [src]="imgUrl.value" alt="Card image cap">
+			<img
+				*ngIf="product.imageUrl" 
+				class="card-img-top"
+				[src]="product.imageUrl"
+				alt="Card image cap"
+			/>
 			<div class="card-body">
-				<h5 class="card-title">{{ title.value }}</h5>
-				<p class="card-text">{{ price.value | currency:'USD':true }}</p>
+				<h5 class="card-title">{{ product.title }}</h5>
+				<p class="card-text">{{ product.price | currency:'USD':'symbol' }}</p>
 				<!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
 			</div>
 		</div>

@@ -22,7 +22,6 @@ export class SessionService {
 		private userService: UserService
 	) {
 		this.user$ = afAuth.authState;
-		console.log( this.user$ );
 	}
 
 	doGoogleSignInUsingRedirect(): void {

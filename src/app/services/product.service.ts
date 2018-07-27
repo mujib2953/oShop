@@ -17,4 +17,8 @@ export class ProductService {
 	getAll() {
 		return this.db.list( '/products' ).snapshotChanges();
 	}
+
+	get( p_productId: string ) {
+		return this.db.object( `/products/${p_productId}` ).valueChanges();
+	}
 }

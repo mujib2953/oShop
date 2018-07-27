@@ -38,9 +38,12 @@ export const appPaths: Routes = [
     { path: 'order-success', component: OrderSuccessComponent, canActivate: [ AuthGaurdService ] },
     
 
-    { path: 'admin/products', component: AdminProductsComponent, canActivate: [ AuthGaurdService, AdminAuthGaurdService ] },
+    
     { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [ AuthGaurdService, AdminAuthGaurdService ] },
     { path: 'admin/products/new', component: AdminProductFormComponent, canActivate: [ AuthGaurdService, AdminAuthGaurdService ] },
+    { path: 'admin/products/:id', component: AdminProductFormComponent, canActivate: [ AuthGaurdService, AdminAuthGaurdService ] },
+    { path: 'admin/products', component: AdminProductsComponent, canActivate: [ AuthGaurdService, AdminAuthGaurdService ] },
+
 
     { path: '**', component: PageNotFoundComponent }
 ];
